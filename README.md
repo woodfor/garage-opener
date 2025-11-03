@@ -18,13 +18,8 @@ An automated garage door opener system that uses computer vision to detect and r
 
 3. **Computer/Raspberry Pi**
    - **Python 3.13.2 is required**
-   - Should have sufficient processing power for YOLO models and license plate recognition
    - GPU recommended but not required (CPU inference is supported)
 
-### Model Files Required
-
-- `yolov8n.pt` - YOLOv8 nano model for vehicle detection (automatically downloaded on first use)
-- `license_plate_detector.pt` - Custom YOLO model for license plate detection (must be provided)
 
 ## Setup
 
