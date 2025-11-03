@@ -147,6 +147,23 @@ LPR_PROCESSING_INTERVAL = 5  # Process every 5 seconds (more frequent)
 LPR_PROCESSING_INTERVAL = 20  # Process every 20 seconds (less frequent)
 ```
 
+### Frame Rotation
+
+The frame rotation in `main.py` line 255 is specific to the current camera's orientation. Frames are rotated 90 degrees clockwise to make the license plate horizontal for detection. If your camera already outputs a correctly oriented image (horizontal), you can remove or change this rotation.
+
+Code reference:
+```254:256:/home/jet/Projects/garage-opener/main.py
+            if (
+                current_time_monotonic - last_lpr_processed_time
+            ) >= LPR_PROCESSING_INTERVAL:
+                # rotate the frame 90 degrees
+                frame_rotated = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+```
+
+- If your feed is already horizontal: remove the rotation and use `frame` directly.
+- If your feed is upside down: change to `cv2.ROTATE_180`.
+- If your feed is rotated the other way: use `cv2.ROTATE_90_COUNTERCLOCKWISE`.
+
 ## Running the System
 
 ```bash
